@@ -1,8 +1,14 @@
 //import logo from "./logo.svg";
 import "./App.css";
+import Board from "./components/Board";
 
 const App = () => {
-  return <h1>Welcome Ajay</h1>;
+  return (
+    <div>
+      <h1>Welcome Ajay</h1>
+      <Board />
+    </div>
+  );
 };
 
 // function App() {
