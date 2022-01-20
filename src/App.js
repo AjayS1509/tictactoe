@@ -1,6 +1,8 @@
 //import logo from "./logo.svg";
 import "./App.css";
 import Board from "./components/Board";
+import Histroy from "./components/Histroy";
+import StatusMessage from "./components/StatusMessage";
 import React, { useState } from "react";
 
 import "./style/root.scss";
@@ -17,10 +19,6 @@ const App = () => {
   console.log("histroy", histroy);
 
   const winner = calculateWinner(current.board);
-
-  const message = winner
-    ? `Winner is ${winner}`
-    : `Next Player is ${current.isXNext ? "X" : "O"}`;
 
   const handleSquareclick = (position) => {
     if (current.board[position] || winner) {
@@ -40,34 +38,19 @@ const App = () => {
     // setIsXNext((prev) => !prev);
     setCurrentMove((prev) => prev + 1);
   };
+
+  const moveTo = (move) => {
+    setCurrentMove(move);
+  };
+
   return (
     <div className="app">
       <h1>Tic Tac Toe</h1>
-      <h2>{message}</h2>
+      <StatusMessage winner={winner} current={current} />
       <Board board={current.board} handleSquareclick={handleSquareclick} />
+      <Histroy histroy={histroy} moveTo={moveTo} currentMove={currentMove} />
     </div>
   );
 };
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
