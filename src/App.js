@@ -2,10 +2,12 @@
 import "./App.css";
 import Board from "./components/Board";
 
+import "./style/root.scss";
+
 const App = () => {
   return (
-    <div>
-      <h1>Welcome Ajay</h1>
+    <div className="app">
+      <h1>Tic Tac Toe</h1>
       <Board />
     </div>
   );
